@@ -1,0 +1,207 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "numeAlegator",
+						"type": "bytes32"
+					}
+				],
+				"name": "addCandidate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "castigatorAlegeri",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "candidatCastigator_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "votant",
+						"type": "address"
+					}
+				],
+				"name": "dreptVot",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPropuneri",
+				"outputs": [
+					{
+						"internalType": "bytes32[]",
+						"name": "",
+						"type": "bytes32[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "numeleCastigatorului",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "numeleCastigatorului_",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "propuneri",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "nume",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numarVoturi",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_admin",
+						"type": "address"
+					}
+				],
+				"name": "setAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "propunereVot",
+						"type": "uint256"
+					}
+				],
+				"name": "vot",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "votanti",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "vot",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "votare",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "urmarireVot",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"voting.sol": "BuletinVot"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"voting.sol": {
+			"keccak256": "0xf9959bc70fbfd8549a94485af1d8b3b702e8592c3ca651e866c4441c3f9769ee",
+			"urls": [
+				"bzz-raw://8cc04f27bae26ce2a83298eee6e9c96ffe386ac4cbcad7ff1815276f4ee40d38",
+				"dweb:/ipfs/QmaNKazzG12ffFfvueJfSE4j62QK9L7qxrhuZSXF1EUM2L"
+			]
+		}
+	},
+	"version": 1
+}

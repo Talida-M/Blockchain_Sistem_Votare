@@ -1,0 +1,15 @@
+{
+  "name": "metode_bytes_string",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bytesCreati.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ethers": "^6.2.3"
+  }
+}
