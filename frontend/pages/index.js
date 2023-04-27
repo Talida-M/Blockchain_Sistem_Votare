@@ -21,8 +21,13 @@ export default function Home() {
       const overrides = {
         gasPrice: 0,
       };
+
       const candidates = await votingContract.getPropuneri(overrides);
+      console.log("candidates:hggg ", candidates);
+
+      await candidates.wait();
       console.log("candidates: ", candidates);
+
       setCandidates(candidates);
     } catch (error) {
       console.error(error);
@@ -73,7 +78,7 @@ export default function Home() {
   useEffect(() => {
     if (!walletConnected) {
       web3ModalRef.current = new Web3Modal({
-        network: "mumbai",
+        network: "mainnet",
         providerOptions: {},
         disableInjectedProvider: false,
       });

@@ -43,7 +43,7 @@ function Admin() {
   useEffect(() => {
     if (!walletConnected) {
       web3ModalRef.current = new Web3Modal({
-        network: "mumbai",
+        network: "mainnet",
         providerOptions: {},
         disableInjectedProvider: false,
       });
@@ -112,12 +112,11 @@ function Admin() {
       
       // Covert this to bytes32
       if(isAdmin === true){
-        const tx = await votingContract.adaugaCandidat(name, overrides);
-        const candidates = await votingContract.propuneri(0).call();
-        console.log("candidates: ", candidates);
-        console.log("succes", tx);
+        console.log(name);
+        const tx = await votingContract.addCandidate(name, overrides);
         await tx.wait();
-      
+        console.log("succes", tx);
+
      
       }
       else{

@@ -43,7 +43,7 @@ function Result() {
   useEffect(() => {
     if (!walletConnected) {
       web3ModalRef.current = new Web3Modal({
-        network: "mumbai",
+        network: "mainnet",
         providerOptions: {},
         disableInjectedProvider: false,
       });
