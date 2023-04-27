@@ -43,7 +43,7 @@ function Admin() {
   useEffect(() => {
     if (!walletConnected) {
       web3ModalRef.current = new Web3Modal({
-        network: "mainnet",
+        network: "localhost",
         providerOptions: {},
         disableInjectedProvider: false,
       });
@@ -56,12 +56,9 @@ function Admin() {
     
     const signer = await getProviderOrSigner(true);
     const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, signer);
-    const overrides = {
-      gasPrice: 0
-    };
     
     const address = await signer.getAddress();
-    const result = await votingContract.setAdmin(address, overrides);
+    const result = await votingContract.admin();
     console.log(result);
     setIsAdmin(true);
 

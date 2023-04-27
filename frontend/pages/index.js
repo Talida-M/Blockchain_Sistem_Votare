@@ -18,11 +18,9 @@ export default function Home() {
     try {
       const provider = await getProviderOrSigner(true);
       const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, provider);
-      const overrides = {
-        gasPrice: 0,
-      };
+    
 
-      const candidates = await votingContract.getPropuneri(overrides);
+      const candidates = await votingContract.getPropuneri();
       console.log("candidates:hggg ", candidates);
 
       await candidates.wait();
@@ -78,7 +76,7 @@ export default function Home() {
   useEffect(() => {
     if (!walletConnected) {
       web3ModalRef.current = new Web3Modal({
-        network: "mainnet",
+        network: "localhost",
         providerOptions: {},
         disableInjectedProvider: false,
       });
@@ -106,10 +104,8 @@ export default function Home() {
     try {
       const signer = await getProviderOrSigner(true);
       const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, signer);
-      const overrides = {
-        gasPrice: 0,
-      };
-      const tx = await votingContract.vot(ID, overrides);
+     
+      const tx = await votingContract.vot(ID);
     } catch (error) {
       console.error(error);
     }
