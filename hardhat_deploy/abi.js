@@ -2,58 +2,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "bytes32",
-				"name": "numeCandidat",
-				"type": "bytes32"
-			}
-		],
-		"name": "addCandidate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "votant",
-				"type": "address"
-			}
-		],
-		"name": "dreptVot",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getPropuneri",
-		"outputs": [
-			{
-				"internalType": "bytes32[]",
-				"name": "propunerile",
-				"type": "bytes32[]"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_admin",
-				"type": "address"
-			}
-		],
-		"name": "setAdmin",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "bytes32[]",
 				"name": "candidatii",
 				"type": "bytes32[]"
@@ -65,12 +13,12 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "candidate",
-				"type": "uint256"
+				"internalType": "bytes32",
+				"name": "numeCandidat",
+				"type": "bytes32"
 			}
 		],
-		"name": "vot",
+		"name": "addCandidate",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -83,6 +31,19 @@
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "candidateWinner",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "winnerName",
+				"type": "bytes32"
 			}
 		],
 		"stateMutability": "view",
@@ -108,13 +69,26 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "votant",
+				"type": "address"
+			}
+		],
+		"name": "dreptVot",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
-		"name": "candidateWinner",
+		"name": "getPropuneri",
 		"outputs": [
 			{
-				"internalType": "bytes32",
-				"name": "winnerName",
-				"type": "bytes32"
+				"internalType": "bytes32[]",
+				"name": "propunerile",
+				"type": "bytes32[]"
 			}
 		],
 		"stateMutability": "view",
@@ -175,6 +149,19 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "candidate",
+				"type": "uint256"
+			}
+		],
+		"name": "vot",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

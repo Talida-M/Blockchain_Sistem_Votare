@@ -6,7 +6,9 @@ import { VOTE_CONTRACT_ADDRESS, abi } from "../constants";
 import Layout from "../components/Layout";
 function Result() {
   const [winName, setWinName] = useState("");
+  const [winNameBytes, setWinNameBytes] = useState("");
   const [numCandidates, setNumCandidates] = useState("");
+  let bytesN;
   const [numVoters, setNumVoters] = useState("");
   const [leftToVote, setLeftToVote] = useState("");
 
@@ -27,6 +29,19 @@ function Result() {
     }
   };
 
+  function createBytes(args) {
+    const name = args;
+    const bytes = ethers.utils.formatBytes32String(name);
+    console.log("Bytes:", bytes);
+    return bytes;
+  }
+
+  function parseBytes(args) {
+    const bytes = args;
+    const name = ethers.utils.parseBytes32String(bytes);
+    console.log("name: ", name);
+    return name;
+  }
   const getProviderOrSigner = async (needSigner = false) => {
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
@@ -58,24 +73,29 @@ function Result() {
     try {
       const provider = await getProviderOrSigner(false);
       const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, provider);
-      const name = await votingContract.winnerName();
-      setWinName(parseBytes(name));
-      //console.log(name, "winner");
+      const name = await votingContract.candidateWinner();
+      const nume = parseBytes(name);
+      setWinName(nume);
+      console.log(name, "winner");
+      console.log(winName, "winnName");
+      winnerVotes(nume);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const winnerVotes = async () => {
+  
+  const winnerVotes = async (nume) => {
     try {
       const provider = await getProviderOrSigner(false);
       const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, provider);
-      const count = await votingContract.winnerVotes();
-
+      console.log(nume, "winName1");
+      console.log(createBytes(nume), "byteees");
+      const count = await votingContract.numarVoturi(createBytes(nume));
       count = utils.formatEther(count) * 1000000000000000000;
       setWinVote(count);
       //let no =
-      console.log(count, "winner");
+      console.log(count, "number winner");
     } catch (error) {
       console.error(error);
     }
@@ -83,8 +103,8 @@ function Result() {
   /////////////////////=========================>
 
   function winHandler() {
-    winnerVotes();
     winnerName();
+   // winnerVotes();
   }
 
   

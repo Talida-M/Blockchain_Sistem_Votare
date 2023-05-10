@@ -11,7 +11,6 @@ function Admin() {
   const [walletConnected, setWalletConnected] = useState(false);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
 
 
   const web3ModalRef = useRef();
@@ -60,7 +59,6 @@ function Admin() {
     const address = await signer.getAddress();
     const result = await votingContract.admin();
     console.log(result);
-    setIsAdmin(true);
 
     // const aa = await votingContract.getAdmin();
 
@@ -103,26 +101,20 @@ function Admin() {
       const signer = await getProviderOrSigner(true);
 
       const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, signer);
-      const overrides = {
-        gasPrice: 0
-      };
+      const admin = await votingContract.admin();
+    
+      console.log("ADMIN: ", admin);
       
-      // Covert this to bytes32
-      if(isAdmin === true){
+      if(admin != null){
         console.log(name);
-        const tx = await votingContract.addCandidate(name, overrides);
+        const tx = await votingContract.addCandidate(name);
         await tx.wait();
         console.log("succes", tx);
-
-     
       }
       else{
         window.alert("Doar adminul poate  adauga un candidat");
         throw new Error("Doar adminul poate adauga un candidat");
-      }
-  
-      
-      // await getNumOfCandidates();
+      } 
     } catch (error) {
       console.error(error);
     }
@@ -147,13 +139,14 @@ function Admin() {
 
       const signer = await getProviderOrSigner(true);
       const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, signer);
-      const overrides = {
-        gasPrice: 0
-      };
-      if(isAdmin === true)
-      {
+ 
+      const admin = await votingContract.admin();
+    
+      console.log("ADMIN: ", admin);
+      
+      if(admin != null){
 
-          const tx = await votingContract.dreptVot(ID, overrides);
+          const tx = await votingContract.dreptVot(ID);
           console.log(tx);
       }
       else{
@@ -168,21 +161,7 @@ function Admin() {
   return (
     <>
       <Layout title="election-chief">
-        <div className={styles.admindiv}>
-          <div className={styles.main}>
-            <div className={styles.own}>
-              <span>
-                <button className={styles.btn} onClick={VotOwner}>
-                Devino admin
-                </button>
-              </span>
-            </div>
-          <div>
-          <button className={styles.btn2} onClick={connectWallet}>
-                          Connect the wallet
-                        </button>
-          </div>
-          </div>
+        <div className={styles.admindiv}>       
 
           <div>
             <div className={styles.form_div}>

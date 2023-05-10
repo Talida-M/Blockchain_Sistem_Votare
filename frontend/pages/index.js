@@ -12,25 +12,41 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const web3ModalRef = useRef();
   const [selectedHouse, setSelectedHouse] = useState([]);
-  const [candidati, setCandidates] = useState(["hhhjjh"]);
+  const [candidati, setCandidates] = useState([]);
 
   const getCandidates = async () => {
+
     try {
-      const provider = await getProviderOrSigner(true);
-      const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, provider);
     
-
-      const candidates = await votingContract.getPropuneri();
-      console.log("candidates:hggg ", candidates);
-
-      await candidates.wait();
-      console.log("candidates: ", candidates);
-
-      setCandidates(candidates);
+    const provider = await getProviderOrSigner(true);
+    
+    const votingContract = new Contract(VOTE_CONTRACT_ADDRESS, abi, provider);
+    
+    
+    const admin = await votingContract.admin();
+    
+    console.log("ADMIN: ", admin);
+    
+    
+    const propuneri = await votingContract.candidates(0);
+    
+    console.log("PROPUNERI: ", propuneri);
+    
+    
+    const candidates = await votingContract.getPropuneri();
+    const listaNume = candidates.map((candidate) => parseBytes(candidate));
+    setCandidates(listaNume);
+    console.log("CCC", listaNume);
+    console.log("candidates:hggg ", candidates);
+    
+    
     } catch (error) {
-      console.error(error);
+    
+    console.error(error);
+    
     }
-  };
+    
+    };
 
 
   ////////////////////////////
@@ -50,6 +66,7 @@ export default function Home() {
     const bytes = args;
     const name = ethers.utils.parseBytes32String(bytes);
     console.log("name: ", name);
+    return name;
   }
 
   const connectWallet = async () => {
@@ -83,7 +100,7 @@ export default function Home() {
 
       connectWallet();
     }
-    getCandidates();
+      getCandidates();
   }, [walletConnected]);
 
   function handleInputChange(event) {
@@ -130,7 +147,7 @@ export default function Home() {
                   for (let i = 0; i < candidati.length; i++) {
                     rows.push(
                       <tr key={i}>
-                        <td>{i}</td>
+                        <td>{i + 1}</td>
                         <td>{candidati[i]}</td>
                       </tr>
                     );
